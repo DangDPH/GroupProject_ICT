@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Flappy_Player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
@@ -77,13 +77,10 @@ public class Flappy_Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Obstacle")
-        {
-            Object.FindFirstObjectByType<GameManager>().GameOver();
-        }
-        else if (other.gameObject.tag == "Scoring")
-        {
-            Object.FindFirstObjectByType<GameManager>().IncreaseScore();
+        if (other.gameObject.tag == "Obstacle") {
+            FindObjectOfType<GameManager>().GameOver();
+        } else if (other.gameObject.tag == "Scoring") {
+            FindObjectOfType<GameManager>().IncreaseScore();
         }
     }
 
