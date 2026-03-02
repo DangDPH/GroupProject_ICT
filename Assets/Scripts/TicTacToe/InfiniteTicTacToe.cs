@@ -10,38 +10,80 @@ public class InfiniteTicTacToe : MonoBehaviour
     public TMP_Text[] cellTexts;
     public TMP_Text turnIndicatorText;
 
+    [Header("Screens")]
+    public GameObject modeSelectionPanel;
+    public GameObject gameOverPanel;
+    public TMP_Text gameOverWinnerText;
+
     [Header("Aesthetics")]
-    public Color colorX = Color.red;    // X defaults to Red
-    public Color colorO = Color.blue;   // O defaults to Blue
-    public float markFontSize = 150f;   // Adjust this in the Inspector to fit your grid
+    public Color colorX = Color.red;
+    public Color colorO = Color.blue;
+    public float markFontSize = 150f;
 
-    // 0 = empty, 1 = Player X, 2 = Player O
     private int[] boardState = new int[9];
-
-    // Queues to enforce the 3-mark rolling constraint
     private Queue<int> playerXQueue = new Queue<int>();
     private Queue<int> playerOQueue = new Queue<int>();
 
     private bool isPlayerXTurn = true;
     private bool isGameOver = false;
+    private bool isBotMode = false;
 
     private void Start()
     {
-        // Automatically make the font bigger for all cells when the game starts
         foreach (TMP_Text txt in cellTexts)
         {
-            if (txt != null)
-            {
-                txt.fontSize = markFontSize;
-            }
+            if (txt != null) txt.fontSize = markFontSize;
         }
+
+        // Show mode selection at the very start
+        modeSelectionPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
     }
+
+    // --- BUTTON METHODS ---
+
+    public void StartPvP()
+    {
+        isBotMode = false;
+        ResetAndStartGame();
+    }
+
+    public void StartPvBot()
+    {
+        isBotMode = true;
+        ResetAndStartGame();
+    }
+
+    public void ResetAndStartGame()
+    {
+        // Clear logic
+        boardState = new int[9];
+        playerXQueue.Clear();
+        playerOQueue.Clear();
+        isGameOver = false;
+        isPlayerXTurn = true;
+
+        // Clear UI
+        for (int i = 0; i < 9; i++)
+        {
+            cellTexts[i].text = "";
+        }
+
+        modeSelectionPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        UpdateTurnIndicator();
+    }
+
+    // --- GAME LOGIC ---
 
     public void OnCellClicked(int cellIndex)
     {
-        // Ignore click if game is over or cell is already taken
         if (isGameOver || boardState[cellIndex] != 0) return;
 
+        // If it's the Bot's turn, ignore human clicks
+        if (isBotMode && !isPlayerXTurn) return;
+
+        // Human places mark (X always, or O if PvP)
         if (isPlayerXTurn)
         {
             PlaceMark(cellIndex, 1, "X", playerXQueue, colorX);
@@ -51,43 +93,86 @@ public class InfiniteTicTacToe : MonoBehaviour
             PlaceMark(cellIndex, 2, "O", playerOQueue, colorO);
         }
 
-        if (CheckWin())
-        {
-            isGameOver = true;
+        if (CheckWinAndHandleGameOver()) return;
 
-            // Safety check added here to prevent the crash!
-            if (turnIndicatorText != null)
-            {
-                turnIndicatorText.text = (isPlayerXTurn ? "X" : "O") + " WINS!";
-                turnIndicatorText.color = isPlayerXTurn ? colorX : colorO; // Matches text color to winner
-            }
-            return;
+        SwitchTurns();
+
+        // Trigger Bot if needed
+        if (isBotMode && !isPlayerXTurn && !isGameOver)
+        {
+            // Small delay so the bot doesn't move instantly
+            Invoke(nameof(PlayBotMove), 0.5f);
+        }
+    }
+
+    private void PlayBotMove()
+    {
+        if (isGameOver) return;
+
+        // Find all empty cells
+        List<int> emptyCells = new List<int>();
+        for (int i = 0; i < 9; i++)
+        {
+            if (boardState[i] == 0) emptyCells.Add(i);
         }
 
-        // Switch turns
-        isPlayerXTurn = !isPlayerXTurn;
-        if (turnIndicatorText != null)
+        // Pick a random empty cell
+        if (emptyCells.Count > 0)
         {
-            turnIndicatorText.text = (isPlayerXTurn ? "X's Turn" : "O's Turn");
-            turnIndicatorText.color = isPlayerXTurn ? colorX : colorO; // Matches text color to current turn
+            int botChoice = emptyCells[Random.Range(0, emptyCells.Count)];
+            PlaceMark(botChoice, 2, "O", playerOQueue, colorO);
+
+            if (CheckWinAndHandleGameOver()) return;
+
+            SwitchTurns();
         }
     }
 
     private void PlaceMark(int cellIndex, int playerID, string symbol, Queue<int> playerQueue, Color markColor)
     {
-        // 1. Place the new mark
         boardState[cellIndex] = playerID;
         cellTexts[cellIndex].text = symbol;
-        cellTexts[cellIndex].color = markColor; // Apply the Red or Blue color
+        cellTexts[cellIndex].color = markColor;
         playerQueue.Enqueue(cellIndex);
 
-        // 2. Enforce the Rolling Constraint (Max 3 marks)
         if (playerQueue.Count > 3)
         {
             int oldestCellIndex = playerQueue.Dequeue();
-            boardState[oldestCellIndex] = 0; // Clear the logical state
-            cellTexts[oldestCellIndex].text = ""; // Clear the UI
+            boardState[oldestCellIndex] = 0;
+            cellTexts[oldestCellIndex].text = "";
         }
+    }
+
+    private void SwitchTurns()
+    {
+        isPlayerXTurn = !isPlayerXTurn;
+        UpdateTurnIndicator();
+    }
+
+    private void UpdateTurnIndicator()
+    {
+        if (turnIndicatorText != null)
+        {
+            turnIndicatorText.text = isPlayerXTurn ? "X's Turn" : "O's Turn";
+            turnIndicatorText.color = isPlayerXTurn ? colorX : colorO;
+        }
+    }
+
+    private bool CheckWinAndHandleGameOver()
+    {
+        if (CheckWin())
+        {
+            isGameOver = true;
+            gameOverPanel.SetActive(true);
+
+            if (gameOverWinnerText != null)
+            {
+                gameOverWinnerText.text = (isPlayerXTurn ? "X" : "O") + " WINS!";
+                gameOverWinnerText.color = isPlayerXTurn ? colorX : colorO;
+            }
+            return true;
+        }
+        return false;
     }
 
     private bool CheckWin()
@@ -104,10 +189,7 @@ public class InfiniteTicTacToe : MonoBehaviour
             int b = winPatterns[i, 1];
             int c = winPatterns[i, 2];
 
-            // If the cells are not empty and all match the same player ID
-            if (boardState[a] != 0 &&
-                boardState[a] == boardState[b] &&
-                boardState[a] == boardState[c])
+            if (boardState[a] != 0 && boardState[a] == boardState[b] && boardState[a] == boardState[c])
             {
                 return true;
             }

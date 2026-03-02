@@ -312,7 +312,7 @@ MonoBehaviour:
   m_text: "Nguy\u1EC5n Kh\xE1nh Chi  23BI14073\n\u0110\xE0o Ph\xFA H\u1ED3ng \u0110\u0103ng 
     23BI14083\nH\xE0n Ng\u1ECDc Di\u1EC7p  23BI14096\nNguy\u1EC5n Th\u1EBF \xC1nh
     D\u01B0\u01A1ng  23BI14124\nTr\u1EA7n Tr\u01B0\u1EDDng Giang  23BI14137\nNguy\u1EC5n
-    Trung Ngh\u0129a  23bi14336"
+    Trung Ngh\u0129a  23BI14336"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -489,8 +489,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6dd481c1b3358c74e8a1b7b50812abf4, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b617bd0d398ff034281a430e5ec9f650, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0.3529412, a: 0.3764706}
+  m_Color: {r: 0, g: 0.039215688, b: 0.3529412, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8617260415480239454, guid: 6f815b0ba28a7484e9143b74dc2e7c56, type: 3}
+  m_Sprite: {fileID: 4534577443288452845, guid: 1b870e8b2d4d0ea42a62c8590b4438aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
