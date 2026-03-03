@@ -1,81 +1,93 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI; // Needed to control the Sliders
 
 public class AudioSettingsManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
-    // PlayerPrefs Keys matching your schema exactly
-    private const string MASTER = "MasterVolume";
-    private const string MUSIC = "MusicVolume";
-    private const string SFX = "SFXVolume";
-    private const string MUTED = "IsMuted";
+    // These must EXACTLY match the names in your Exposed Parameters list!
+    private const string MIXER_MASTER = "MasterVol";
+    private const string MIXER_MUSIC = "MusicVol";
+    private const string MIXER_SFX = "SFXVol";
+
+    // PlayerPrefs Keys for saving data
+    private const string PREF_MASTER = "MasterVolume";
+    private const string PREF_MUSIC = "MusicVolume";
+    private const string PREF_SFX = "SFXVolume";
+    private const string PREF_MUTED = "IsMuted";
+
+    [Header("UI References")]
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
+    public Toggle muteToggle;
 
     private void Start()
     {
-        LoadVolumes();
+        LoadSettings();
     }
 
-    // These take 'float' so Unity UI Sliders can trigger them, 
-    // but we immediately convert them to Int (0-7) to match your schema.
-    public void SetMasterVolume(float sliderValue)
+    private void LoadSettings()
     {
-        int intVol = Mathf.Clamp(Mathf.RoundToInt(sliderValue), 0, 7);
-        PlayerPrefs.SetInt(MASTER, intVol);
-        UpdateMixer(MASTER, intVol);
+        // 1. Load the 0-7 values from memory (default to 7 if new)
+        int mVol = PlayerPrefs.GetInt(PREF_MASTER, 7);
+        int muVol = PlayerPrefs.GetInt(PREF_MUSIC, 7);
+        int sVol = PlayerPrefs.GetInt(PREF_SFX, 7);
+        bool isMuted = PlayerPrefs.GetInt(PREF_MUTED, 0) == 1;
+
+        // 2. Update the Sliders visually
+        if (masterSlider != null) masterSlider.value = mVol;
+        if (musicSlider != null) musicSlider.value = muVol;
+        if (sfxSlider != null) sfxSlider.value = sVol;
+        if (muteToggle != null) muteToggle.isOn = isMuted;
+
+        // 3. Apply to the Mixer
+        ApplyAllSettings(isMuted, mVol, muVol, sVol);
     }
 
-    public void SetMusicVolume(float sliderValue)
-    {
-        int intVol = Mathf.Clamp(Mathf.RoundToInt(sliderValue), 0, 7);
-        PlayerPrefs.SetInt(MUSIC, intVol);
-        UpdateMixer(MUSIC, intVol);
-    }
+    public void SetMasterVolume(float value) => SaveAndApply(PREF_MASTER, MIXER_MASTER, value);
+    public void SetMusicVolume(float value) => SaveAndApply(PREF_MUSIC, MIXER_MUSIC, value);
+    public void SetSFXVolume(float value) => SaveAndApply(PREF_SFX, MIXER_SFX, value);
 
-    public void SetSFXVolume(float sliderValue)
-    {
-        int intVol = Mathf.Clamp(Mathf.RoundToInt(sliderValue), 0, 7);
-        PlayerPrefs.SetInt(SFX, intVol);
-        UpdateMixer(SFX, intVol);
-    }
-
-    // New method to handle the IsMuted boolean from your schema
     public void SetMuted(bool isMuted)
     {
-        PlayerPrefs.SetInt(MUTED, isMuted ? 1 : 0);
-        LoadVolumes(); // Reloading applies the mute state instantly
+        PlayerPrefs.SetInt(PREF_MUTED, isMuted ? 1 : 0);
+        LoadSettings(); // Refresh everything
     }
 
-    private void LoadVolumes()
+    private void SaveAndApply(string prefKey, string mixerKey, float sliderValue)
     {
-        // 1 = True, 0 = False. Defaulting to 0 (unmuted).
-        bool isMuted = PlayerPrefs.GetInt(MUTED, 0) == 1;
+        int intVol = Mathf.RoundToInt(sliderValue);
+        PlayerPrefs.SetInt(prefKey, intVol);
 
-        if (isMuted)
+        // Only update mixer if not currently muted
+        if (PlayerPrefs.GetInt(PREF_MUTED, 0) == 0)
         {
-            // If muted, drop all audio mixer parameters to -80dB
-            audioMixer.SetFloat(MASTER, -80f);
-            audioMixer.SetFloat(MUSIC, -80f);
-            audioMixer.SetFloat(SFX, -80f);
+            UpdateMixer(mixerKey, intVol);
+        }
+    }
+
+    private void ApplyAllSettings(bool muted, int m, int mu, int s)
+    {
+        if (muted)
+        {
+            audioMixer.SetFloat(MIXER_MASTER, -80f);
+            audioMixer.SetFloat(MIXER_MUSIC, -80f);
+            audioMixer.SetFloat(MIXER_SFX, -80f);
         }
         else
         {
-            // Default to 7 (max volume) if no save data exists yet
-            UpdateMixer(MASTER, PlayerPrefs.GetInt(MASTER, 7));
-            UpdateMixer(MUSIC, PlayerPrefs.GetInt(MUSIC, 7));
-            UpdateMixer(SFX, PlayerPrefs.GetInt(SFX, 7));
+            UpdateMixer(MIXER_MASTER, m);
+            UpdateMixer(MIXER_MUSIC, mu);
+            UpdateMixer(MIXER_SFX, s);
         }
     }
 
     private void UpdateMixer(string parameterName, int vol0to7)
     {
-        // Convert the 0-7 integer back into a 0.0f - 1.0f percentage for the math
-        float linearValue = vol0to7 / 7f;
-        audioMixer.SetFloat(parameterName, ToDB(linearValue));
-    }
-
-    float ToDB(float value)
-    {
-        return value <= 0.001f ? -80f : Mathf.Log10(value) * 20f;
+        float linearValue = vol0to7 / 7f; // Convert 0-7 scale to 0-1
+        float dbValue = linearValue <= 0.001f ? -80f : Mathf.Log10(linearValue) * 20f;
+        audioMixer.SetFloat(parameterName, dbValue);
     }
 }

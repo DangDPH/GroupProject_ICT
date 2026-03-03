@@ -3,23 +3,24 @@ using UnityEngine.EventSystems;
 
 public class GameCardButton : MonoBehaviour, IPointerClickHandler
 {
-    [Header("Game Info")]
-    public string gameId;   // "tictactoe", "pong", "snake"
+    [Header("Game Identity")]
+    public string gameDisplayName; // What shows up on the panel (e.g., "Ping Pong")
+    public string targetSceneName; // The exact file name (e.g., "Game_PingPong")
+    public Sprite gameIcon;        // The picture of the game
 
-    [Header("UI Reference")]
-    public GameInfoPanelController gameInfoPanel;
+    [Header("Panel Reference")]
+    public GameInfoPanelController infoPanel;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked game: " + gameId);
-
-        if (gameInfoPanel != null)
+        if (infoPanel != null)
         {
-            gameInfoPanel.Show(gameId);
+            // Send this card's specific data to the big panel!
+            infoPanel.Show(gameDisplayName, gameIcon, targetSceneName);
         }
         else
         {
-            Debug.LogWarning("GameInfoPanelController is NOT assigned!");
+            Debug.LogError("Game Info Panel is not linked to this card!");
         }
     }
 }

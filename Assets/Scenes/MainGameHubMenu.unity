@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 19278997}
   - component: {fileID: 19278996}
   - component: {fileID: 19278995}
+  - component: {fileID: 19278998}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -252,6 +253,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19278993}
   m_CullTransparentMesh: 1
+--- !u!114 &19278998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19278993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &69378839
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 50, y: 80}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69378841
 MonoBehaviour:
@@ -341,6 +354,7 @@ GameObject:
   - component: {fileID: 115890908}
   - component: {fileID: 115890907}
   - component: {fileID: 115890906}
+  - component: {fileID: 115890911}
   m_Layer: 5
   m_Name: GameCard (2)
   m_TagString: Untagged
@@ -381,8 +395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: Game #3
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: EndlessRun
+  targetSceneName: Game_EndlessRun
+  gameIcon: {fileID: -8625906013721215279, guid: 644f3396249ea0749bd818fc049e4f57, type: 3}
+  infoPanel: {fileID: 1765105281}
 --- !u!114 &115890907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +519,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115890904}
   m_CullTransparentMesh: 1
+--- !u!114 &115890911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115890904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &165159486
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +695,7 @@ GameObject:
   - component: {fileID: 222843556}
   - component: {fileID: 222843555}
   - component: {fileID: 222843554}
+  - component: {fileID: 222843559}
   m_Layer: 5
   m_Name: GameCard (1)
   m_TagString: Untagged
@@ -707,8 +736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: Game #2
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: FlappyBird
+  targetSceneName: Game_FlappyBird
+  gameIcon: {fileID: -5064401156898091283, guid: 65b11dfd84f57a34c86013915795e0c7, type: 3}
+  infoPanel: {fileID: 1765105281}
 --- !u!114 &222843555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +860,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222843552}
   m_CullTransparentMesh: 1
+--- !u!114 &222843559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222843552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &264831103
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1022,7 @@ GameObject:
   - component: {fileID: 329717393}
   - component: {fileID: 329717392}
   - component: {fileID: 329717391}
+  - component: {fileID: 329717396}
   m_Layer: 5
   m_Name: GameCard (4)
   m_TagString: Untagged
@@ -1019,8 +1063,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: Game #5
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: TicTacToe
+  targetSceneName: Game_TicTacToe
+  gameIcon: {fileID: -8263956325467413408, guid: af3695d9935dad549894525b245f3c6b, type: 3}
+  infoPanel: {fileID: 1765105281}
 --- !u!114 &329717392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1187,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329717389}
   m_CullTransparentMesh: 1
+--- !u!114 &329717396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329717389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &370157886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1349,7 @@ GameObject:
   - component: {fileID: 473008948}
   - component: {fileID: 473008947}
   - component: {fileID: 473008946}
+  - component: {fileID: 473008951}
   m_Layer: 5
   m_Name: GameCard (3)
   m_TagString: Untagged
@@ -1331,8 +1390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: Game #4
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: 'MonsterHunter '
+  targetSceneName: Game_MonsterHunter
+  gameIcon: {fileID: 4495478712733764576, guid: 9dc80c3cc396b9f4c973817f6141cb77, type: 3}
+  infoPanel: {fileID: 1765105281}
 --- !u!114 &473008947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,6 +1514,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473008944}
   m_CullTransparentMesh: 1
+--- !u!114 &473008951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473008944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &484347309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,7 +1890,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852914672}
-  - component: {fileID: 852914673}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1847,32 +1919,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &852914673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852914671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &923395397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,17 +2388,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6dd481c1b3358c74e8a1b7b50812abf4, type: 2}
+  m_sharedMaterial: {fileID: -302727497699320291, guid: 6dd481c1b3358c74e8a1b7b50812abf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4290113277
+  m_fontColor: {r: 0.99215686, g: 0.93333334, b: 0.70980394, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2369,13 +2415,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 80
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontSizeMax: 80
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2571,6 +2617,7 @@ GameObject:
   - component: {fileID: 1083978791}
   - component: {fileID: 1083978790}
   - component: {fileID: 1083978789}
+  - component: {fileID: 1083978794}
   m_Layer: 5
   m_Name: GameCard (5)
   m_TagString: Untagged
@@ -2611,8 +2658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: Game #6
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: PingPong
+  targetSceneName: Game_PingPong
+  gameIcon: {fileID: 328891224453361919, guid: 591fbdd599b0ac14dac27ce01fa02bb7, type: 3}
+  infoPanel: {fileID: 1765105281}
 --- !u!114 &1083978790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,6 +2782,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083978787}
   m_CullTransparentMesh: 1
+--- !u!114 &1083978794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083978787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &1178221665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,6 +3084,7 @@ GameObject:
   - component: {fileID: 1286292372}
   - component: {fileID: 1286292371}
   - component: {fileID: 1286292370}
+  - component: {fileID: 1286292373}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -3119,7 +3181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95686275, g: 0.84705883, b: 0.17254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3144,6 +3206,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286292368}
   m_CullTransparentMesh: 1
+--- !u!114 &1286292373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286292368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &1304426279
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,6 +3442,7 @@ GameObject:
   - component: {fileID: 1534819707}
   - component: {fileID: 1534819706}
   - component: {fileID: 1534819705}
+  - component: {fileID: 1534819708}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -3489,6 +3564,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534819703}
   m_CullTransparentMesh: 1
+--- !u!114 &1534819708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534819703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &1543945379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,6 +3740,7 @@ GameObject:
   - component: {fileID: 1593791691}
   - component: {fileID: 1593791694}
   - component: {fileID: 1593791695}
+  - component: {fileID: 1593791696}
   m_Layer: 5
   m_Name: GameCard
   m_TagString: Untagged
@@ -3813,8 +3901,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83348fe3536241888cdbad5ea5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCardButton
-  gameId: 
-  gameInfoPanel: {fileID: 1765105281}
+  gameDisplayName: MineSweeper
+  targetSceneName: Game_MineSweeper
+  gameIcon: {fileID: -6186359935989566147, guid: 0b7fdb8ca543b794d8ad20a893200435, type: 3}
+  infoPanel: {fileID: 1765105281}
+--- !u!114 &1593791696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593791689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1 &1765105277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3834,7 +3936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1765105278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3847,7 +3949,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1790103321}
   - {fileID: 1286292369}
   - {fileID: 852914672}
   m_Father: {fileID: 1256102053}
@@ -3855,7 +3956,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 900, y: 1500}
+  m_SizeDelta: {x: 900, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765105279
 MonoBehaviour:
@@ -3870,7 +3971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9, g: 0.9, b: 0.9, a: 0.52156866}
+  m_Color: {r: 0.08627451, g: 0.14117648, b: 0.31764707, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3909,6 +4010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameInfoPanelController
   gameNameText: {fileID: 2064969447}
   gameIcon: {fileID: 69378841}
+  sceneNavigator: {fileID: 1798556410}
 --- !u!225 &1765105282
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3921,81 +4023,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1 &1790103320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1790103321}
-  - component: {fileID: 1790103323}
-  - component: {fileID: 1790103322}
-  m_Layer: 5
-  m_Name: Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1790103321
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790103320}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1765105278}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1790103322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790103320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1790103323
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790103320}
-  m_CullTransparentMesh: 1
 --- !u!1 &1798556409
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,8 +4545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -145}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 50, y: -250}
+  m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064969447
 MonoBehaviour:
@@ -4543,8 +4570,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6dd481c1b3358c74e8a1b7b50812abf4, type: 2}
+  m_sharedMaterial: {fileID: -302727497699320291, guid: 6dd481c1b3358c74e8a1b7b50812abf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4568,15 +4595,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4632,6 +4659,7 @@ GameObject:
   - component: {fileID: 2095002984}
   - component: {fileID: 2095002983}
   - component: {fileID: 2095002982}
+  - component: {fileID: 2095002985}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -4656,8 +4684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -205}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 50, y: -400}
+  m_SizeDelta: {x: 700, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095002982
 MonoBehaviour:
@@ -4702,7 +4730,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2095002983}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1765105281}
+        m_TargetAssemblyTypeName: GameInfoPanelController, Assembly-CSharp
+        m_MethodName: PlayCurrentGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2095002983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4716,7 +4756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.14117648, g: 0.34901962, b: 0.18039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4741,6 +4781,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095002980}
   m_CullTransparentMesh: 1
+--- !u!114 &2095002985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095002980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff81ea6cc62eda74b96d785e33abc1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalButtonSound
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
